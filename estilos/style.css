@@ -1,0 +1,636 @@
+/*uso de variables en css*/
+
+
+/*La pseudo-clase :root de CSS selecciona el elemento raíz de un árbol que representa el documento. En HTML, :root representa el elemento <html> y es idéntico al selector html, excepto que su especificidad es mayor.
+
+/* Selecciona el elemento raíz del documento:
+   <html> en el caso de HTML */
+
+:root {
+    --red: #ff2e63;
+    --black: #252a34;
+    --blue: #08d9d6;
+    --white: #eaeaea;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    background-color: #fff;
+    overflow-x: hidden;
+    /*La propiedad de CSS overflow-x establece lo que se muestra cuando el contenido desborda los elementos de nivel de bloque en los bordes izquierdo y derecho. Puede que no sea nada, una barra de desplazamiento o el contenido adicional.*/
+    /*es decir uqe no exista scroll horizontal en el eje x*/
+    font-family: 'Raleway', sans-serif;
+}
+
+
+/* menu de navegacion */
+
+header {
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    /*La propiedad CSS z-index indica el orden de un elemento posicionado y sus descendientes. Cuando varios elementos se superponen, los elementos con mayor valor z-index cubren aquellos con menor valor.*/
+}
+
+.menu .logo-box {
+    margin-left: 20px;
+}
+
+.menu .logo-box h1 a {
+    font-size: 35px;
+    font-weight: 400;
+    /*normal 
+Peso/grueso normal de la fuente. Igual que 400.*/
+    color: var(--black);
+}
+
+.menu .list-container ul {
+    display: flex;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.list-container {
+    margin-right: 40px;
+}
+
+.menu .list-container ul li {
+    margin: 0px 20px;
+}
+
+.menu .list-container ul li a {
+    display: block;
+    font-size: 1em;
+    border-radius: 24px;
+    padding: 8px;
+    /* border: 1px solid orangered; */
+    transition: 0.3s;
+}
+
+.menu .list-container ul li .activo {
+    background-color: var(--red);
+    color: #fff;
+}
+
+.menu .list-container ul li a:hover {
+    background-color: var(--red);
+    color: #fff;
+}
+
+
+/*desaparecemos la barra del menu solo disponible en otras pantallas*/
+
+.btn-menu {
+    display: none;
+}
+
+
+/* estilos para la imagen del header */
+
+.img-header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(../img/header.jpg);
+    background-attachment: fixed;
+    /*La propiedad CSS background-attachment determina si la posición de la imagen de fondo será fija dentro de la pantalla o se desplazará con su bloque contenedor.
+    Si fixed es especificado, la imagen de fondo estará fija en la pantalla y no se moverá con el bloque contenedor.*/
+    background-position: center;
+    background-size: cover;
+}
+
+.img-header .welcome {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+    /*degradado*/
+    /*degradado negro*/
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.img-header .welcome h1 {
+    font-size: 2.5em;
+    color: #fff;
+    font-weight: 200;
+}
+
+.img-header .welcome h2 {
+    font-size: 1.5em;
+    color: #fff;
+    font-weight: 200;
+}
+
+.img-header .welcome hr {
+    width: 400px;
+    height: 2px;
+    background-color: #fff;
+    margin: 20px;
+}
+
+.abajo {
+    width: 120px;
+    height: 45px;
+    border-radius: 20px;
+    border: 1px solid pink;
+    color: black;
+    font-size: 1em;
+    padding: 3px 5px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: var(--blue);
+}
+
+.abajo:hover {
+    color: white;
+    background-color: var(--red);
+}
+
+
+/* styles for about us */
+
+.acercaDe {
+    width: 100%;
+    margin-top: 120px;
+}
+
+.info-container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-container h1 {
+    font-size: 3em;
+    font-weight: 400;
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 1.2em;
+}
+
+.info-container p {
+    font-size: 1.2em;
+    text-align: center;
+    color: var(--black);
+    line-height: 2em;
+    margin: 10px 0px;
+}
+
+.info-container .gallery {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info-container .gallery img {
+    width: calc(33.3% - 10px);
+    /*uso de la propiedad calc */
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    /*Técnicamente esta propiedad nos permite especificar cómo se va a distribuir la altura y el ancho de un elemento con respecto a la medida del contenedor.
+    posibles valores de esta propiedad
+
+    fill: Valor por defecto. Estira el contenido hasta su contenedor sin tener en cuenta el aspect-ratio.
+contain: Incrementa o reduce el tamaño del contenido hasta adoptar el tamaño del contenedor respetando el aspect-ratio.
+cover: El contenido completará el alto y ancho del contenedor pero cortando información si es necesario.
+none: El contenido se expande a su tamaño original sin respetar los límites del padre.
+scale-down: Selecciona el menor de la comparación entre none y contain.
+    
+    
+    */
+}
+
+.info-container .leerMas {
+    align-self: center;
+    margin: 20px 0px;
+}
+
+
+/* aqui termina seccion de acerca de y comienza Nuestros proyectos */
+
+.nuestrosProyectos {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 100px;
+    background: url(../img/img-2.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.nuestrosProyectos .degBackground {
+    position: absolute;
+    /*para sobreponerse al padre */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+}
+
+.nuestrosProyectos .ejeZContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.nuestrosProyectos .containerProjects {
+    width: 90%;
+    margin: auto;
+    padding-top: 100px;
+}
+
+.nuestrosProyectos .containerProjects .projecTitle {
+    border: 2px solid white;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    width: 75%;
+    margin: auto;
+}
+
+.nuestrosProyectos .containerProjects .projecTitle h2 {
+    font-size: 2.5em;
+    font-weight: normal;
+    color: var(--white);
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+}
+
+.nuestrosProyectos .containerProjects .project-img {
+    width: 100%;
+    display: flex;
+    margin-top: 80px;
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+    justify-content: space-around;
+}
+
+.nuestrosProyectos .containerProjects .project-img img {
+    width: calc(30% - 10px);
+    margin: 10px;
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* testimonios */
+
+.testimonios {
+    width: 100%;
+    margin: 100px auto;
+}
+
+.testimonios .testimoniosTitle {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    padding: 10px;
+}
+
+.testimonios .testimoniosTitle h2 {
+    font-size: 40px;
+    font-weight: normal;
+    color: var(--black);
+}
+
+.testimonios .testimoniosTitle hr {
+    height: 3px;
+    background-color: var(--black);
+}
+
+.box-testimonios {
+    width: 90%;
+    margin: 80px auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.box-testimonios .card-testimonios {
+    width: 45%;
+    margin: 20px;
+}
+
+.box-testimonios .card-testimonios .imgTestimonios {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-testimonios .card-testimonios .imgTestimonios img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    /*anulamos el efecto de imagen esttirada*/
+}
+
+.box-testimonios .card-testimonios .textTestimonios {
+    width: 100%;
+    padding: 20px;
+    text-align: justify;
+    border: 2px solid var(--red);
+    border-radius: 20px;
+    transition: 200ms;
+}
+
+.box-testimonios .card-testimonios .textTestimonios h4 {
+    font-size: 2em;
+    font-weight: normal;
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.box-testimonios .card-testimonios .textTestimonios p {
+    color: var(--black);
+    font-size: 1em;
+    font-family: 'Raleway', sans-serif;
+    transition: 200ms;
+}
+
+.box-testimonios .card-testimonios .textTestimonios:hover {
+    border: 2px solid var(--blue);
+    background-color: #d6d2c4;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.box-testimonios .card-testimonios .textTestimonios h4:hover {
+    color: var(--blue);
+}
+
+
+/* testimonios */
+
+
+/* formulario de contacto */
+
+footer {
+    /*footer estatico Genial */
+    width: 100%;
+    height: 100vh;
+    background: url(../img/footer.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer .degFooter {
+    /*tipo un manta por encima de la imagen para el efecto de sombra*/
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .2);
+}
+
+footer .footerTitle {
+    width: 50%;
+    padding: 20px;
+}
+
+footer .footerTitle h2 {
+    font-size: 3em;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-align: center;
+}
+
+footer .formularioContent {
+    width: 90%;
+    padding: 1em;
+    border: 3px solid var(--white);
+    background-color: grey;
+    position: relative;
+    opacity: 0.8;
+    z-index: 3;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+footer .formularioContent form {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+footer .formularioContent form input {
+    width: 60%;
+    padding: 1em;
+    border-radius: 5px;
+    border: none;
+}
+
+footer .formularioContent form label {
+    color: black;
+    font-size: 1.5em;
+    font-weight: 400;
+    border-bottom: 2px solid #000;
+    margin-bottom: 5px;
+}
+
+footer .formularioContent form textarea {
+    width: 60%;
+}
+
+footer .formularioContent form button {
+    padding: 5px;
+    margin: 10px auto;
+    border-radius: 10px;
+    color: var(--black);
+    cursor: pointer;
+}
+
+
+/* formulario de contacto */
+
+
+/* derechos de autor  */
+
+footer .footerText {
+    width: 90%;
+    height: 6em;
+    border: 3px solid var(--white);
+    border-radius: 10px;
+    background-color: grey;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#goTop {
+    z-index: 9999;
+    font-size: 1em;
+}
+
+#goTop i {
+    padding: 1em;
+    border: #000;
+    background-color: var(--blue);
+    border-radius: 25%;
+    cursor: pointer;
+}
+
+
+/* media queryes @media */
+
+
+/* vista tablets  */
+
+@media only screen and (max-width: 900px) {
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 25vh;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 9999;
+        /*La propiedad CSS z-index indica el orden de un elemento posicionado y sus descendientes. Cuando varios elementos se superponen, los elementos con mayor valor z-index cubren aquellos con menor valor.*/
+    }
+    .menu .logo-box {
+        padding: 1em 1em 3em 1em;
+    }
+    .menu .logo-box h1 a {
+        font-size: 35px;
+        font-weight: 400;
+    }
+    .img-header {
+        position: relative;
+        width: 100%;
+        height: 90vh;
+        background: url(../img/header.jpg);
+        background-attachment: fixed;
+        /*La propiedad CSS background-attachment determina si la posición de la imagen de fondo será fija dentro de la pantalla o se desplazará con su bloque contenedor.
+    Si fixed es especificado, la imagen de fondo estará fija en la pantalla y no se moverá con el bloque contenedor.*/
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+
+/* vista para dispositivos mobiles  */
+
+@media only screen and (max-width:700px) {
+    .btn-menu {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        position: absolute;
+        top: 1em;
+        right: 3em;
+        cursor: pointer;
+    }
+    .btn-menu>.fa-bars:hover {
+        color: var(--red);
+        background-color: white;
+        border-color: var(--red);
+    }
+    .btn-menu>.fa-times {
+        color: var(red);
+        border-color: var(--red);
+    }
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 10vh;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 9999;
+        /*La propiedad CSS z-index indica el orden de un elemento posicionado y sus descendientes. Cuando varios elementos se superponen, los elementos con mayor valor z-index cubren aquellos con menor valor.*/
+    }
+    .menu .logo-box {
+        padding: 1em 1em 3em 0em;
+    }
+    .menu .logo-box h1 a {
+        font-size: 25px;
+        font-weight: 400;
+    }
+    .menu .list-container {
+        position: absolute;
+        margin: 0;
+        padding: 1em 2em;
+        width: 100%;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    .menu .list-container ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .menu .list-container ul li {
+        text-align: center;
+        border-bottom: 2px solid var(--red);
+        background-color: var(--white);
+        color: rgb(12, 12, 110);
+        transition: 0.5s;
+    }
+    .menu .list-container ul li .activo {
+        background-color: var(--white);
+        color: rgb(12, 12, 110);
+    }
+    .menu .list-container ul li:hover {
+        background-color: var(--red);
+        color: var(--white);
+        border-radius: 10px;
+        border: none;
+    }
+}
